@@ -3,26 +3,43 @@ layout: default
 title: Homepage
 ---
 
-    <div class="section no-pad-bot cyan darken-1" id="index-banner">
-        <div class="container">
-            <br><br>
+<header>
+    <ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
+        <li class="center blue-grey darken-5">
             <br>
+            <a id="logo-container" href="http://materializecss.com/" class="brand-logo white-text">
+                <img src="res/logo.png" width="100%"/>
+            </a>
             <br>
-            <h1 class="header center white-text text-darken-2">TitanCast</h1>
-            <div class="row center">
-                <h5 class="header col s12 light white-text">Extend the capabilities of your applications</h5>
-            </div>
-            <div class="row center">
-                <a href="/download/" id="download-button" 
-                   class="btn-large waves-effect waves-light cyan darken-4 z-depth-4">
-                    DOWNLOAD <i class="material-icons right">file_download</i></a>
-            </div>
-            <br>
-            <br><br><br>
-
+        </li>
+        <li class="bold">
+            <a href="about.html" class="waves-effect waves-teal">About</a>
+        </li>
+    </ul>
+</header>
+<main>
+    <div class="center-align white-text cyan darken-1"> 
+        <h2>TitanCast</h2>
+        <div class="row">
+            <h5>Bring interactivity to your applications.</h4>
         </div>
+        <br><br>
+        <div class="row">
+            <a id="download-button" class="btn-large waves-effect cyan darken-3 z-depth-2 grey-text text-lighten-3">DOWNLOAD NOW</a>
+        </div>
+        <div class="row cyan-text text-lighten-4">
+            <p>version {{ site.data.vh[0].version }} for Android</p>
+        </div>
+        <br><br>
     </div>
-
-
-    <div class="container">
-    </div>
+    <div class="grey-text text-lighten-1 grey darken-3"><br>
+        <div class="container">
+            
+            version {{ site.data.vh[0].version }} updated on {{ site.data.vh[0].release }} 
+           {% for repository in site.github.public_repositories %}
+  * [{{ repository.name }}]({{ repository.html_url }})
+{% endfor %}
+            
+        </div>
+    <br></div>
+</main>

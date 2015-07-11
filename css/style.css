@@ -6,9 +6,20 @@
  * Made By MaterializeCSS.com
  */
 
-.icon-block {
-  padding: 0 15px;
+.bold{
+    font-weight: 700;
 }
-.icon-block .material-icons {
-	font-size: inherit;
+main{
+    padding-left:240px;
+}
+.pad{
+    padding:16px;
+}
+
+#download-button{
+    width:320px;
+    height:84px;
+    line-height:84px;
+    font-size:24px;
+    font-weight:400;
 }
