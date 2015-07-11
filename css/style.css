@@ -9,8 +9,10 @@
 .bold{
     font-weight: 700;
 }
-main{
-    padding-left:240px;
+@media only screen and (min-width : 992px){
+    main{
+        padding-left:240px;
+    }
 }
 .pad{
     padding:16px;
@@ -22,4 +24,19 @@ main{
     line-height:84px;
     font-size:24px;
     font-weight:400;
+}
+
+#mobileactive{
+    position:fixed;
+    top:8px;
+    left:8px;
+    z-index:10000;
+}
+
+#mobileactive i{
+    font-size:30px;
+}
+
+.fa-big{
+    font-size:20em;
 }

@@ -3,22 +3,8 @@ layout: default
 title: Homepage
 ---
 
-<header>
-    <ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
-        <li class="center blue-grey darken-5">
-            <br>
-            <a id="logo-container" href="http://materializecss.com/" class="brand-logo white-text">
-                <img src="res/logo.png" width="100%"/>
-            </a>
-            <br>
-        </li>
-        <li class="bold">
-            <a href="about.html" class="waves-effect waves-teal">About</a>
-        </li>
-    </ul>
-</header>
 <main>
-    <div class="center-align white-text cyan darken-1"> 
+    <div class="center-align white-text cyan darken-1">  
         <h2>TitanCast</h2>
         <div class="row">
             <h5>Bring interactivity to your applications.</h4>
@@ -33,15 +19,65 @@ title: Homepage
         <br><br>
     </div>
     <div class="grey-text text-lighten-1 grey darken-3"><br>
-        <div class="container">
-            
-            version {{ site.data.vh[0].version }} updated on {{ site.data.vh[0].release }} 
-            {% for repository in site.github.public_repositories %}
-                {% if repository.name == "TitanCast" %}
-                    {{ site.github.build_revision }}
-                {% endif %}
-            {% endfor %}
-            
+        <div class="container" id="github">
+            <b class="hide-on-med-and-down" title="Edge Version contains the most recent developer updates">edge version </b>
         </div>
     <br></div>
+    
+    <div class="grey-text text-darken-1"><br />
+        <a name="about"></a>
+        <div class="container">
+            <div class="section">
+                <h4>What is it?</h4>
+                <p class="flow-text">
+                    TitanCast creates a bridge between your computer and device, allowing them
+                    to communicate with a low latency. As a result, you can transform your device into
+                    a secondary controller or screen.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cyan-text blue-grey darken-3">
+        <section><br>
+            
+            <div class="container" style="width:90%">
+                <div class="row center-align">
+                    <div class="col l4 s12">
+                        <h5>POWERFUL</h5>
+                        <i class="fa fa-cogs fa-4x"></i>
+                        <p class="grey-text text-lighten-3 light">
+                            With aims to bring a seamless bridge between phone/tablet and desktops, TitanCast
+                            is lightweight enough to be blazing fast, yet has enough features to be
+                            truly useful. Applications can make use of sensors such as the accelerometer and be able
+                            to send data with ease.
+                        </p>
+                    </div>
+                    <div class="col l4 s12">
+                        <h5>OPEN-SOURCE</h5>
+                        <i class="fa fa-github fa-4x"></i>
+                        <p class="grey-text text-lighten-3 light">
+                            TitanCast's source code is available <a href="https://github.com/TitanCast/" class="cyan-text bold">here</a>.
+                            Because the code is open for scrutiny, you can be sure that you receive stable updates of TitanCast.
+                        </p>
+                    </div>
+                    <div class="col l4 s12">
+                        <h5>SIMPLE</h5>
+                        <i class="fa fa-bolt fa-4x"></i>
+                        <p class="grey-text text-lighten-3 light">
+                            It's <i>really</i> simple for developers everywhere to integrate TitanCast into
+                            their applications. There's even a planned extension for Scratch so that anyone
+                            anywhere can start working with TitanCast.<br>
+                            Even if you're not planning on developing anything, TitanCast is so easy to setup
+                            that you'll be able to connect to any application within a matter of seconds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        <br></section>
+    </div>
+    
 </main>
+
+<script src="js/github.js"></script>
