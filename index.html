@@ -37,7 +37,9 @@ title: Homepage
             
             version {{ site.data.vh[0].version }} updated on {{ site.data.vh[0].release }} 
             {% for repository in site.github.public_repositories %}
-              * [{{ repository.name }}]({{ repository.html_url }})
+                {% if repository.name == "TitanCast" %}
+                    {{ site.github.build_revision }}
+                {% endif %}
             {% endfor %}
             
         </div>
