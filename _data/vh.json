@@ -1,0 +1,10 @@
+[
+    {
+        version : "0.0.1",
+        release : "10-07-2015",
+        download : "/download/v/titancast.0.0.1.apk",
+        buildType : "beta",
+        stable : "no",
+        description : ""
+    }
+]
