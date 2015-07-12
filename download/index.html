@@ -3,14 +3,41 @@ layout: default
 title: Downloads
 ---
 
-<div class="container">
-    <br>
-    <h3 class="teal-text">DOWNLOADS</h3> <div class="divider"></div><br>
-    Site under construction... may look bad or not function correctly.
-</div>
+<main>
+    <div class="center-align white-text cyan">
+        <div class="section">
+            <h2>Downloads</h2>
+        </div>
+    </div>
+    <div class="center-align cyan-text text-darken-4 grey lighten-3">
+        <a name="downloads"></a>
+        <div class="section">
+            <div class="container" style="width:90%">
+                
+                <table class="centered striped">
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Release</th>
+                            <th>Type</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-<div class="container">
-    <a href="{{ site.data.vh[0].download }}" class="waves-effect waves-light btn teal">
-        Download Latest ({{ site.data.vh[0].version }})
-    </a>
-</div>
+                        {% for version in site.data.vh %}
+                            <tr>
+                                <td>{{ version.version }}</td>
+                                <td>{{ version.release }}</td>
+                                <td>{{ version.buildType }}</td>
+                                <td><a href="{{ version.download }}" class="btn">DOWNLOAD</a></td>
+                            </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div><br>
+</main>

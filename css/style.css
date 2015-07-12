@@ -33,10 +33,25 @@
     z-index:10000;
 }
 
+#mobileactive a{
+    background:rgba(0,0,0,0.3);
+    width:48px;
+    text-align: center;
+    border-radius:0;
+}
+
 #mobileactive i{
     font-size:30px;
 }
 
 .fa-big{
     font-size:20em;
+}
+
+header ul .fa{
+    margin-right:12px;
+}
+
+#nav-mobile{
+    box-shadow: 0px 0px 10px black;
 }
