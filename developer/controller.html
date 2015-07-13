@@ -1,0 +1,47 @@
+<html>
+<script>
+    function send() {
+
+        var dat = {
+            data: [
+                50,
+                75
+            ]
+        };
+
+        device.sendData(JSON.stringify(dat));
+
+    }
+</script>
+
+<body>
+    <canvas id="myCanvas" width="200" height="200" style="background:cyan"></canvas>
+    <script>
+        can = document.getElementById("myCanvas");
+
+        can.addEventListener("touchmove", touch, true);
+
+        var timeSinceLast = Date.now();
+        
+        function touch(e) {
+            
+            if (!e)
+                var e = event;
+            e.preventDefault();
+            canX = e.targetTouches[0].pageX - can.offsetLeft;
+            canY = e.targetTouches[0].pageY - can.offsetTop;
+            
+            device.sendData(JSON.stringify({
+
+                data : [
+                    canX,
+                    canY
+                ]
+                
+            }));
+            
+        }
+    </script>
+</body>
+
+</html>

@@ -7,3 +7,9 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="/js/timeago.js"></script>
 <link rel="stylesheet" href="/octicons/octicons.css">
+{% if page.title == "Developer" %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/titancast-api.js"></script>
+{% endif %}

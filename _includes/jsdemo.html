@@ -1,0 +1,19 @@
+var MyApp = new TitanCastApplication(
+    "RANDOMT HING",
+    "It like does stuff that does stuff wooahh so insightful",
+    "http://titancast.github.io/developer/controller.html",
+    "#none#"
+);
+
+var Device = MyApp.createDevice( pp(prompt("Connection Code")) );
+
+Device.setEvent("customData", function(data){
+
+    data = data[0];
+    
+    var x = data[0],
+        y = data[1];
+
+    setLoc(x, y);
+
+});
