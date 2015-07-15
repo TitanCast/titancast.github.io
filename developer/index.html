@@ -3,11 +3,13 @@ layout: default
 title: Developer
 ---
 
+
 <main>
-    <div class="center-align white-text cyan darken-1">  
+    <div class="center-align white-text cyan darken-1">
         <div class="container">
-            <img src="/res/devbanner.png" class="responsive-img" width="60%"/>
-        </div><br>
+            <img src="/res/devbanner.png" class="responsive-img" width="60%" />
+        </div>
+        <br>
         <div class="row container">
             <h5 class="light">Make your applications even more awesome!</h4>
         </div>
@@ -35,8 +37,7 @@ title: Developer
                 <div class="col grey lighten-3 s12 m7 l7">
                     <pre><code class="javascript">{% include jsdemo.html %}</code></pre>
                 </div>
-                <div class="col s12 m5 l5">
-                    <canvas id="canvas" width="400" height="400" class="cyan"></div>
+                <div class="col s12 m5 l5" id="canv">
                 </div>
             </div>
         </div>
@@ -47,38 +48,47 @@ title: Developer
             {% include jsdemo.html %}
         }
          
-        var canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d");
-         
-            var x = 0, y = 0;
+          var renderer = new PIXI.WebGLRenderer(400, 400);
             
-        function setLoc(ax, ay){
-            x = ax;
-            y = ay;
-        }
-            
-        requestAnimationFrame(draw);
-            
-        function draw(){
+        $("#canv").append(renderer.view);
 
-            canvas.width = canvas.width;
-            ctx.fillStyle= "white";
+        var stage = new PIXI.Container();
+
+        var circleT = PIXI.Texture.fromImage('/res/circle.png');
+        var circle = new PIXI.Sprite(circleT);
+
             
-            ctx.fillRect( x*2-4, y*2-4, 4, 4);
-            requestAnimationFrame(draw);
+        circle.position.x = 50;
+        circle.position.y = 50;
+
+                circle.anchor.x = 0.5;
+                circle.anchor.y = 0.5;
             
+        stage.addChild(circle);
+
+        animate();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(stage);
         }
             
-            function pp(c){
-                var chunks = c.split(" ");
-                
-                var parts = [];
-                
-                for(chunk in chunks){
-                    parts.push( parseInt(chunks[chunk], 16) );
-                }
-                
-                return parts.join(".");
+        function pp(c){
+            var chunks = c.split(" ");
+            
+            var parts = [];
+            
+            for(chunk in chunks){
+                parts.push( parseInt(chunks[chunk], 16) );
             }
+                
+            return parts.join(".");
+        }
+        
+        function setLoc(x, y){
+            circle.position.x = x*2;
+            circle.position.y = y*2;
+        }
     </script>
     
 </main>
