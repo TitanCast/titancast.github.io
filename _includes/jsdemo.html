@@ -1,19 +1,24 @@
 var MyApp = new TitanCastApplication(
     "Circle Test",
     "Control a circle from your phone",
-    "http://titancast.github.io/developer/controller.html",
-    "#none#" // tells TitanCast that we aren't using any app icon.
+    "http://titancast.github.io/developer/controller.html"
 );
 
-var Device = MyApp.createDevice( pp(prompt("Connection Code")) );
+var Device = MyApp.createDevice( prompt("Connection Code") );
 
 Device.setEvent("customData", function(data){
 
     data = data[0]; //get the coordinate variable
-    
+
     var x = data[0], //get the x coord
         y = data[1]; //get the y coord
 
     setLoc(x, y); // set the coordinates of the on-screen circle to x and y
 
 });
+
+/*
+  this demo references code that is non-essential to use
+  TitanCast. The referenced methods - e.g. setLoc - is
+  only used for rendering purposes
+*/

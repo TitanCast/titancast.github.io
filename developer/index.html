@@ -3,12 +3,11 @@ layout: default
 title: Developer
 ---
 
-
 <main>
     <div class="center-align white-text cyan darken-1">
-        <div class="container">
-            <img src="/res/devbanner.png" class="responsive-img" width="60%" />
-        </div>
+        <div class="container"><br>
+            <img src="/res/devbanner.png" class="responsive-img" width="60%"/>
+        </div><br>
         <br>
         <div class="row container">
             <h5 class="light">Make your applications even more awesome!</h4>
@@ -19,6 +18,13 @@ title: Developer
         </div>
         <br><br>
     </div>
+    <br>
+    <div class="grey-text text-lighten-1 grey darken-3"><br>
+        <div class="container" id="github">
+            <a class="hide-on-med-and-down bold grey-text text-lighten-2" href="https://github.com/TitanCast/TitanCast/tree/indev" title="Edge Version contains the most recent developer updates">edge version </a>
+        </div>
+    <br></div>
+    <br>
     <div class="grey-text text-lighten-3 cyan">
         <a name="about"></a>
         <div class="container">
@@ -42,14 +48,27 @@ title: Developer
             </div>
         </div>
     </div>
-    
+    <div class="white-text grey darken-4">
+        <div class="section">
+            <div class="container">
+                <h3>Current Functionality</h3>
+                <p class="flow-text grey-text text-lighten-1">
+                    Currently, our efforts are being focussed on the JavaScript API so that it is able to fully
+                    interact with the TitanCast application. Currently, application icons and accelerometer support
+                    is to be added to the JavaScript API - after that, other APIs such as the Java API will be further
+                    developed.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script>
         function runDemo(){
             {% include jsdemo.html %}
         }
-         
-          var renderer = new PIXI.WebGLRenderer(400, 400);
-            
+
+        var renderer = new PIXI.WebGLRenderer(400, 400);
+
         $("#canv").append(renderer.view);
 
         var stage = new PIXI.Container();
@@ -57,13 +76,13 @@ title: Developer
         var circleT = PIXI.Texture.fromImage('/res/Circle.png');
         var circle = new PIXI.Sprite(circleT);
 
-            
-        circle.position.x = 50;
-        circle.position.y = 50;
+
+        circle.position.x = -999;
+        circle.position.y = -999;
 
                 circle.anchor.x = 0.5;
                 circle.anchor.y = 0.5;
-            
+
         stage.addChild(circle);
 
         animate();
@@ -72,23 +91,13 @@ title: Developer
             requestAnimationFrame(animate);
             renderer.render(stage);
         }
-            
-        function pp(c){
-            var chunks = c.split(" ");
-            
-            var parts = [];
-            
-            for(chunk in chunks){
-                parts.push( parseInt(chunks[chunk], 16) );
-            }
-                
-            return parts.join(".");
-        }
-        
+
+
         function setLoc(x, y){
             circle.position.x = x*2;
             circle.position.y = y*2;
         }
     </script>
-    
+
 </main>
+<script src="/js/github.js"></script>
