@@ -1,9 +1,18 @@
 [
     {
+        version : "0.0.3",
+        release : "19-07-2015",
+        download : "/download/v/titancast.0.0.3.apk",
+        buildType : "development",
+        stable : "no",
+        description : "Has some security fixes and minor improvements"
+    },
+    {
+        
         version : "0.0.2",
         release : "12-07-2015",
         download : "/download/v/titancast.0.0.2.apk",
-        buildType : "beta",
+        buildType : "development",
         stable : "no",
         description : "Features the new TitanCast icon!"
     },
@@ -11,7 +20,7 @@
         version : "0.0.1",
         release : "10-07-2015",
         download : "/download/v/titancast.0.0.1.apk",
-        buildType : "beta",
+        buildType : "development",
         stable : "no",
         description : "Test-drive the new TitanCast!"
     }

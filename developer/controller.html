@@ -11,6 +11,7 @@
 
         device.sendData(JSON.stringify(dat));
 
+        device.setOrientation("landscape");
     }
 </script>
 
@@ -22,24 +23,24 @@
         can.addEventListener("touchmove", touch, true);
 
         var timeSinceLast = Date.now();
-        
+
         function touch(e) {
-            
+
             if (!e)
                 var e = event;
             e.preventDefault();
             canX = e.targetTouches[0].pageX - can.offsetLeft;
             canY = e.targetTouches[0].pageY - can.offsetTop;
-            
+
             device.sendData(JSON.stringify({
 
                 data : [
                     canX,
                     canY
                 ]
-                
+
             }));
-            
+
         }
     </script>
 </body>

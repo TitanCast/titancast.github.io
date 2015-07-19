@@ -6,14 +6,27 @@ var MyApp = new TitanCastApplication(
 
 var Device = MyApp.createDevice( prompt("Connection Code") );
 
-Device.setEvent("customData", function(data){
+window.device = Device;
 
-    data = data[0]; //get the coordinate variable
+var alreadyEnabled = false;
+
+Device.setEvent("custom data", function(data){
+
+    data = data.map(parseFloat); //get the coordinate variable
 
     var x = data[0], //get the x coord
         y = data[1]; //get the y coord
 
     setLoc(x, y); // set the coordinates of the on-screen circle to x and y
+
+    if(!alreadyEnabled){
+
+            alreadyEnabled = true;
+    }
+
+});
+
+Device.setEvent("accelerometer data", function(e){
 
 });
 
