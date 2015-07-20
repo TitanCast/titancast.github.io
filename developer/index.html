@@ -3,6 +3,11 @@ layout: default
 title: Developer
 ---
 
+<script>
+if (window.location.protocol == "https:")
+    window.location.href = "http:" + window.location.href.substring(window.location.protocol.length);
+</script>
+
 <main>
     <div class="center-align white-text cyan darken-1">
         <div class="container"><br>
