@@ -1,37 +1,32 @@
 var MyApp = new TitanCastApplication(
-    "Circle Test",
-    "Control a circle from your phone",
-    "http://titancast.github.io/developer/controller.html"
+    "Fake Controller Preview", //title of our application - will appear on app
+    "Control a circle from your phone", //description of our application, does not yet appear on app
+    "http://titancast.github.io/developer/controller.html" //the controller that will be sent to the device.
 );
 
-var Device = MyApp.createDevice( prompt("Connection Code") );
+var Device = MyApp.createDevice(prompt("Connection Code")); //creates a new Device object that is already hooked into our application
 
-window.device = Device;
+Device.on("customData", function(data) {
 
-var alreadyEnabled = false;
+    type = data[0];
+    data.splice(0, 1);
 
-Device.setEvent("custom data", function(data){
+    switch (type) {
 
-    data = data.map(parseFloat); //get the coordinate variable
+        case "joystick":
+            direction = data[0];
+            break;
 
-    var x = data[0], //get the x coord
-        y = data[1]; //get the y coord
+        case "touch":
+            touchDown = (data[0] == "start" ? true : false);
+            break;
 
-    setLoc(x, y); // set the coordinates of the on-screen circle to x and y
-
-    if(!alreadyEnabled){
-
-            alreadyEnabled = true;
+        case "button":
+            if (data[0] == "A") {
+                buttonA = (data[1] == "start" ? true : false);
+            } else if (data[0] == "B") {
+                buttonB = (data[1] == "start" ? true : false);
+            }
+            break;
     }
-
 });
-
-Device.setEvent("accelerometer data", function(e){
-
-});
-
-/*
-  this demo references code that is non-essential to use
-  TitanCast. The referenced methods - e.g. setLoc - is
-  only used for rendering purposes
-*/

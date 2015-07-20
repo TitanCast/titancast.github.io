@@ -18,14 +18,12 @@ title: Developer
         </div>
         <br><br>
     </div>
-    <br>
     <div class="grey-text text-lighten-1 grey darken-3"><br>
         <div class="container" id="github">
             <a class="hide-on-med-and-down bold grey-text text-lighten-2" href="https://github.com/TitanCast/TitanCast/tree/indev" title="Edge Version contains the most recent developer updates">edge version </a>
         </div>
     <br></div>
-    <br>
-    <div class="grey-text text-lighten-3 cyan">
+    <div class="grey-text text-lighten-3 cyan lighten-1">
         <a name="about"></a>
         <div class="container">
             <div class="section">
@@ -39,6 +37,7 @@ title: Developer
     <div class="cyan-text text-darken-3 white">
         <div class="container section">
             <h1>JavaScript <a href="javascript:runDemo()" class="btn"><h6><i class="fa fa-play"></i> PREVIEW</h6></a></h1>
+            <h5 class="light">This demo is not finished just yet</h5>
             <div class="row">
                 <div class="col grey lighten-3 s12 m7 l7">
                     <pre><code class="javascript">{% include jsdemo.html %}</code></pre>
@@ -54,8 +53,7 @@ title: Developer
                 <h3>Current Functionality</h3>
                 <p class="flow-text grey-text text-lighten-1">
                     Currently, our efforts are being focussed on the JavaScript API so that it is able to fully
-                    interact with the TitanCast application. Currently, application icons and accelerometer support
-                    is to be added to the JavaScript API - after that, other APIs such as the Java API will be further
+                    interact with the TitanCast application. After that, other APIs such as the Java API will be further
                     developed.
                 </p>
             </div>
@@ -63,41 +61,16 @@ title: Developer
     </div>
 
     <script>
+        var direction = "",
+        touchDown = false,
+        buttonA = false,
+        buttonB = false;
         function runDemo(){
             {% include jsdemo.html %}
         }
-
-        var renderer = new PIXI.WebGLRenderer(400, 400);
-
-        $("#canv").append(renderer.view);
-
-        var stage = new PIXI.Container();
-
-        var circleT = PIXI.Texture.fromImage('/res/Circle.png');
-        var circle = new PIXI.Sprite(circleT);
-
-
-        circle.position.x = -999;
-        circle.position.y = -999;
-
-                circle.anchor.x = 0.5;
-                circle.anchor.y = 0.5;
-
-        stage.addChild(circle);
-
-        animate();
-
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(stage);
-        }
-
-
-        function setLoc(x, y){
-            circle.position.x = x*2;
-            circle.position.y = y*2;
-        }
+        {% include jsdemorender.html %}
     </script>
 
 </main>
+
 <script src="/js/github.js"></script>

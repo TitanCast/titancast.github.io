@@ -1,46 +1,202 @@
 <html>
-<script>
-    function send() {
 
-        var dat = {
-            data: [
-                50,
-                75
-            ]
-        };
+<head>
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Roboto);
+        body {
+            -webkit-user-select: none;
+            padding: 0;
+            background: #072530;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+        #center {
+            position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+        }
+        .elem {
+            flex: 1;
+            margin: 32px;
+        }
+        .right {
+            text-align: right;
+        }
+        canvas#myCanvas {
+            background: #1D5266;
+            border-radius: 100px;
+        }
+        canvas#myCanvas:active {
+            background: #31809E;
+        }
+        #buttons {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        .button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background: #C93232;
+            text-align: center;
+            line-height: 100px;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0px 5px black;
+            text-shadow: 0px 0px 5px black;
+        }
+        #bbutton {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            background: #C4C932;
+        }
+        #limit {
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
 
-        device.sendData(JSON.stringify(dat));
+<body ontouchstart="">
+    <div id="center">
+        <div class="elem">
+            <canvas id="myCanvas" width="200" height="200"></canvas>
+        </div>
+        <div class="elem right">
+            <div id="buttons">
+                <div class="button" id="abutton" data-type="A">A</div>
+                <div class="button" id="bbutton" data-type="B">B</div>
+            </div>
+        </div>
+    </div>
 
-        device.setOrientation("landscape");
-    }
-</script>
-
-<body>
-    <canvas id="myCanvas" width="200" height="200" style="background:cyan"></canvas>
     <script>
         can = document.getElementById("myCanvas");
 
-        can.addEventListener("touchmove", touch, true);
+        $(".button").bind("touchstart", function() {
 
-        var timeSinceLast = Date.now();
+            var type = $(this).attr("data-type");
+
+            device.sendData(JSON.stringify({
+
+                data: [
+                    "button",
+                    type,
+                    "start"
+                ]
+
+            }));
+            device.vibrate(15);
+        });
+        $(".button").bind("touchend", function() {
+
+            var type = $(this).attr("data-type");
+
+            device.sendData(JSON.stringify({
+
+                data: [
+                    "button",
+                    type,
+                    "end"
+                ]
+
+            }));
+        });
+
+        can.addEventListener("touchmove", touch, true);
+        can.addEventListener("touchstart", touchstart, true);
+        can.addEventListener("touchend", touchend, true);
+
+        device.setOrientation("landscape");
+
+        var offset = $("#myCanvas").offset();
+
+        var currentDirection = "";
 
         function touch(e) {
 
             if (!e)
                 var e = event;
             e.preventDefault();
-            canX = e.targetTouches[0].pageX - can.offsetLeft;
-            canY = e.targetTouches[0].pageY - can.offsetTop;
 
-            device.sendData(JSON.stringify({
+            var canX = e.targetTouches[0].pageX - offset.left;
+            var canY = e.targetTouches[0].pageY - offset.top;
 
+            var angle = getRelative(canX, canY),
+                direction = "error";
+
+            if (angle < 45 || angle > 315)
+                direction = "right";
+            if (angle > 45 && angle < 135)
+                direction = "up";
+            if (angle > 135 && angle < 225)
+                direction = "left";
+            if (angle > 225 && angle < 315)
+                direction = "down";
+
+            if (direction !== currentDirection) {
+                
+                currentDirection = direction;
+                device.vibrate(10);
+                
+                device.sendData(JSON.stringify({
+
+                    data: [
+                        "joystick",
+                        direction
+                    ]
+
+                }));
+            }
+
+        }
+
+        function touchstart(e){
+            
+            device.sendData( JSON.stringify({
                 data : [
-                    canX,
-                    canY
+                    "touch",
+                    "start"
                 ]
+            }) );
+            
+            can.style.background = "#31809E";
+            
+            touch(e);
+        }
+        
+        function touchend(e) {
+            device.sendData( JSON.stringify({
+                data : [
+                    "touch",
+                    "end"
+                ]
+            }) );
+            can.style.background = "#1D5266";
+        }
 
-            }));
+        var rad = (180 / Math.PI);
 
+        function getRelative(_x, _y) {
+
+            var x = _x - 100;
+            var y = _y - 100;
+
+            var theta = Math.atan2(-y, x);
+
+            if (theta < 0)
+                theta += 2 * Math.PI;
+
+            return theta * rad;
         }
     </script>
 </body>

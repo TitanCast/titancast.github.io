@@ -1,0 +1,64 @@
+/*
+    CODE BELOW IS NOT TITANCAST,
+    JUST FOR RENDERING THE GAME
+*/
+
+var renderer = new PIXI.WebGLRenderer(400, 400);
+
+$("#canv").append(renderer.view);
+
+var stage = new PIXI.Container();
+
+var obstacle = new PIXI.Graphics();
+
+// begin a green fill..
+obstacle.beginFill(0x00FF00);
+obstacle.drawRect(150, 150, 100, 100);
+obstacle.endFill();
+
+stage.addChild(obstacle);
+
+var player = new PIXI.Graphics();
+
+player.beginFill(0x0000FF);
+player.drawRect(0,0,50,50);
+player.endFill();
+
+stage.addChild(player);
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(stage);
+}
+
+function simulate() {
+    
+    if(touchDown){
+        
+        var xChange = 0,
+            yChange = 0;
+        
+        if(direction == "up")
+            yChange = -1;
+        if(direction == "down")
+            yChange = 1;
+        if(direction == "left")
+            xChange = -1;
+        if(direction == "right")
+            xChange = 1;
+        
+        player.position.x += xChange * 50;
+        player.position.y += yChange * 50;
+        
+        if(player.position.x < 0 || player.position.x > 350)
+            player.position.x -= xChange * 50;
+        if(player.position.y < 0 || player.position.y > 350)
+            player.position.y -= yChange * 50;
+        
+    }
+    
+}
+
+setInterval(simulate, 100);
+
+animate();
