@@ -1,5 +1,13 @@
 [
     {
+        version : "0.0.4",
+        release : "20-07-2015",
+        download : "/download/v/titancast.0.0.4.apk",
+        buildType : "beta",
+        stable : "no",
+        description : "Bug fixes, improvement to UI and better JS Bridge interface."
+    },
+    {
         version : "0.0.3",
         release : "19-07-2015",
         download : "/download/v/titancast.0.0.3.apk",
