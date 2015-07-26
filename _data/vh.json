@@ -1,13 +1,5 @@
 [
     {
-        version : "0.0.5.1",
-        release : "26-07-2015",
-        download : "/download/v/titancast.0.0.5.1.apk",
-        buildType : "development",
-        stable : "no",
-        description : "Brings WSS support, use TitanCast with HTTPS thanks to self-signing!"
-    },
-    {
         version : "0.0.5",
         release : "26-07-2015",
         download : "/download/v/titancast.0.0.5.apk",
