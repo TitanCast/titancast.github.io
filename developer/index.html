@@ -41,15 +41,8 @@ if (window.location.protocol == "https:")
     </div>
     <div class="cyan-text text-darken-3 white">
         <div class="container section">
-            <h1>JavaScript <a href="javascript:runDemo()" class="btn"><h6><i class="fa fa-play"></i> PREVIEW</h6></a></h1>
-            <h5 class="light">This demo is not finished just yet</h5>
-            <div class="row">
-                <div class="col grey lighten-3 s12 m7 l7">
-                    <pre><code class="javascript">{% include jsdemo.html %}</code></pre>
-                </div>
-                <div class="col s12 m5 l5" id="canv">
-                </div>
-            </div>
+            <h1>JavaScript</h1>
+            <p class="flow-text">The JavaScript API allows you to integrate TitanCast into your web applications easily.</p>
         </div>
     </div>
     <div class="white-text grey darken-4">
@@ -64,18 +57,54 @@ if (window.location.protocol == "https:")
             </div>
         </div>
     </div>
-
-    <script>
-        var direction = "",
-        touchDown = false,
-        buttonA = false,
-        buttonB = false;
-        function runDemo(){
-            {% include jsdemo.html %}
-        }
-        {% include jsdemorender.html %}
-    </script>
-
 </main>
+<script>
+    var Device;
+    
+var MyApp = new TitanCastApplication(
+    "Fake Controller Preview", //title of our application - will appear on app
+    "Control a square from your phone", //description of our application, does not yet appear on app
+    "http://192.168.0.9:4000/developer/controller.html", //the controller that will be sent to the device.,
+    "@https://www.gravatar.com/avatar/4f753c0fb1dafa253dd00b18920c440a?s=32&d=identicon&r=PG"
+);
+    
+    create();
+    
+    function create(){
 
+Device = MyApp.createDevice(prompt("Connection Code")); //creates a new Device object that is already hooked into our application
+
+Device.on("customData", function(data) {
+
+    type = data[0];
+    data.splice(0, 1);
+
+    switch (type) {
+
+        case "joystick":
+            direction = data[0];
+            break;
+
+        case "touch":
+            touchDown = (data[0] == "start" ? true : false);
+            simulate();
+            break;
+
+        case "button":
+            if (data[0] == "A") {
+                buttonA = (data[1] == "start" ? true : false);
+            } else if (data[0] == "B") {
+                buttonB = (data[1] == "start" ? true : false);
+            }
+            if (buttonA) {
+                stamp();
+            } else if (buttonB) {
+                clear();
+            }
+            break;
+    }
+});
+    }
+
+</script>
 <script src="/js/github.js"></script>

@@ -1,8 +1,14 @@
+var icon = new Image();
+icon.src = "https://avatars1.githubusercontent.com/u/12214009?v=3&s=200";
+
 var MyApp = new TitanCastApplication(
     "Fake Controller Preview", //title of our application - will appear on app
     "Control a square from your phone", //description of our application, does not yet appear on app
-    "http://titancast.github.io/developer/controller.html" //the controller that will be sent to the device.
+    "http://192.168.0.9:4000/developer/controller.html", //the controller that will be sent to the device.,
+    icon
 );
+
+console.log(MyApp);
 
 var Device = MyApp.createDevice(prompt("Connection Code")); //creates a new Device object that is already hooked into our application
 
@@ -19,6 +25,7 @@ Device.on("customData", function(data) {
 
         case "touch":
             touchDown = (data[0] == "start" ? true : false);
+            simulate();
             break;
 
         case "button":
@@ -26,6 +33,11 @@ Device.on("customData", function(data) {
                 buttonA = (data[1] == "start" ? true : false);
             } else if (data[0] == "B") {
                 buttonB = (data[1] == "start" ? true : false);
+            }
+            if (buttonA) {
+                stamp();
+            } else if (buttonB) {
+                clear();
             }
             break;
     }
