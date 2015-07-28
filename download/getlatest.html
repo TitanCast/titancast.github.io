@@ -1,3 +1,6 @@
 ---
 ---
-{{ site.data.vh[0].version }}
+{% for version in site.data.vh %}{% if version.buildType == "major" %}{{ version.version }}
+{{ version.intVersion }}
+{{ version.download }}
+stable{% break %}{% endif %}{% endfor %}

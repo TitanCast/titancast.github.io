@@ -62,17 +62,17 @@ if (window.location.protocol == "https:")
     var Device;
     
 var MyApp = new TitanCastApplication(
-    "Fake Controller Preview", //title of our application - will appear on app
-    "Control a square from your phone", //description of our application, does not yet appear on app
+    "Intro to TitanCast", //title of our application - will appear on app
+    "Explore TitanCast, see its features.", //description of our application, does not yet appear on app
     "http://192.168.0.9:4000/developer/controller.html", //the controller that will be sent to the device.,
-    "@https://www.gravatar.com/avatar/4f753c0fb1dafa253dd00b18920c440a?s=32&d=identicon&r=PG"
+    "@http://localhost:4000/res/logosquare.png"
 );
     
-    create();
+    setTimeout(create, 5000);
     
     function create(){
 
-Device = MyApp.createDevice(prompt("Connection Code")); //creates a new Device object that is already hooked into our application
+Device = MyApp.createDevice("c0 a8 00 08"); //creates a new Device object that is already hooked into our application
 
 Device.on("customData", function(data) {
 

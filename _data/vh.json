@@ -1,43 +1,51 @@
 [
     {
+        version : "0.0.5.1",
+        intVersion : 6,
+        release : "28-07-2015",
+        download : "https://github.com/TitanCast/TitanCast/releases/download/v0.0.5.1/titancast.0.0.5.1.apk",
+        buildType : "major",
+        description : "Making it look NICE :D"
+    },
+    {
         version : "0.0.5",
+        intVersion : 5,
         release : "26-07-2015",
-        download : "/download/v/titancast.0.0.5.apk",
+        download : "https://github.com/TitanCast/TitanCast/releases/download/v0.0.5/titancast.0.0.5.apk",
         buildType : "development",
-        stable : "no",
         description : "Brings WSS support, use TitanCast with HTTPS thanks to self-signing!"
     },
     {
         version : "0.0.4",
+        intVersion : 4,
         release : "20-07-2015",
-        download : "/download/v/titancast.0.0.4.apk",
+        download : "https://github.com/TitanCast/TitanCast/releases/download/v0.0.4/titancast.0.0.4.apk",
         buildType : "beta",
-        stable : "no",
         description : "Bug fixes, improvement to UI and better JS Bridge interface."
     },
     {
         version : "0.0.3",
+        intVersion : 3,
         release : "19-07-2015",
-        download : "/download/v/titancast.0.0.3.apk",
+        download : "https://titancast.github.io/download/v/titancast.0.0.3.apk",
         buildType : "development",
-        stable : "no",
         description : "Has some security fixes and minor improvements"
     },
     {
-        
+
         version : "0.0.2",
+        intVersion : 2,
         release : "12-07-2015",
-        download : "/download/v/titancast.0.0.2.apk",
+        download : "https://titancast.github.io/download/v/titancast.0.0.2.apk",
         buildType : "development",
-        stable : "no",
         description : "Features the new TitanCast icon!"
     },
     {
         version : "0.0.1",
+        intVersion : 1,
         release : "10-07-2015",
-        download : "/download/v/titancast.0.0.1.apk",
+        download : "https://titancast.github.io/download/v/titancast.0.0.1.apk",
         buildType : "development",
-        stable : "no",
         description : "Test-drive the new TitanCast!"
     }
 ]

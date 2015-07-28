@@ -1,0 +1,6 @@
+---
+---
+{% for version in site.data.vh %}{{ version.version }}
+{{ version.intVersion }}
+{{ version.download }}
+{{ version.buildType }}{% break %}{% endfor %}
