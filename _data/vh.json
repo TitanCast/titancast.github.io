@@ -1,5 +1,13 @@
 [
     {
+        version : "0.0.5.2",
+        intVersion : 7,
+        release : "30-07-2015",
+        download : "https://github.com/TitanCast/TitanCast/releases/download/v0.0.5.2/titancast.0.0.5.2.apk",
+        buildType : "major",
+        description : "Better versioning internally and slight fixes"
+    },
+    {
         version : "0.0.5.1",
         intVersion : 6,
         release : "28-07-2015",

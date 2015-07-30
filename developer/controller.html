@@ -78,7 +78,8 @@
         }
         
         #xButton{
-            background:cyan;
+            background:rgba(0,0,0,0.2);
+            box-shadow:0;
         }
     </style>
 </head>
@@ -92,7 +93,7 @@
             <div id="buttons">
                 <div class="button" id="abutton" data-type="A">A</div>
                 <div class="button" id="bbutton" data-type="B">B</div>
-                <div class="buttonSmall" id="xbutton" data-type="X">X</div>
+                <div class="buttonSmall" id="xbutton" data-type="X" onclick="window.location.reload()"></div>
             </div>
         </div>
     </div>
@@ -139,11 +140,13 @@
         var offset = $("#myCanvas").offset();
 
         var currentDirection = "";
+                device.vibrate(100);
 
         function touch(e) {
 
-            if (!e)
+            if (!e){
                 var e = event;
+            }
             e.preventDefault();
 
             var canX = e.targetTouches[0].pageX - offset.left;
@@ -166,13 +169,13 @@
             if (direction !== currentDirection) {
                 
                 currentDirection = direction;
-                device.vibrate(10);
+                device.vibrate(20);
                 
                 device.sendData(JSON.stringify({
 
                     data: [
                         "joystick",
-                        direction
+                        currentDirection
                     ]
 
                 }));
@@ -183,7 +186,7 @@
         function touchstart(e){
             
             touch(e);
-            
+            device.vibrate(20);
             device.sendData( JSON.stringify({
                 data : [
                     "touch",
